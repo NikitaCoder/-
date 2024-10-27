@@ -57,9 +57,35 @@ def get_dog_image_url():
         return data['url']
     
 @bot.message_handler(commands=['dog'])
-def duck(message):
-        '''По команде duck вызывает функцию get_duck_image_url и отправляет URL изображения утки'''
+def dog(message):
+        '''По команде dog вызывает функцию get_dog_image_url и отправляет URL изображения собачки'''
         image_url = get_dog_image_url()
+        bot.reply_to(message, image_url)
+
+def get_fox_image_url():    
+        url = 'https://randomfox.ca/floof/'
+        res = requests.get(url)
+        data = res.json()
+        return data['url']
+    
+    
+@bot.message_handler(commands=['fox'])
+def fox(message):
+        '''По команде fox вызывает функцию get_fox_image_url и отправляет URL изображения лисы'''
+        image_url = get_fox_image_url()
+        bot.reply_to(message, image_url)
+
+def get_pokemon_image_url():    
+        url = 'https://pokeapi.co'
+        res = requests.get(url)
+        data = res.json()
+        return data['url']
+    
+    
+@bot.message_handler(commands=['pokemon'])
+def pokemon(message):
+        '''По команде duck вызывает функцию get_pokemon_image_url и отправляет URL изображения покемона'''
+        image_url = get_pokemon_image_url()
         bot.reply_to(message, image_url)
 
 @bot.chat_join_request_handler()
